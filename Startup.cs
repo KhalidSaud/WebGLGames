@@ -17,7 +17,7 @@ namespace WebGLGames
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env )
         {
             Configuration = configuration;
             Env = env;
@@ -25,7 +25,7 @@ namespace WebGLGames
 
         public IConfiguration Configuration { get; }
 
-        public IWebHostEnvironment Env { get; set; }
+        public IWebHostEnvironment Env { get; set;  }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -42,15 +42,15 @@ namespace WebGLGames
 
             IMvcBuilder builder = services.AddRazorPages();
 
-#if DEBUG
-            // Add html runtime refresh
-            services.AddRazorPages().AddRazorRuntimeCompilation();
+#if  DEBUG 
+            //  Add html runtime refresh 
+            services.AddRazorPages().AddRazorRuntimeCompilation(); 
 
-            if (Env.IsDevelopment())
-            {
-                builder.AddRazorRuntimeCompilation();
-            }
-#endif
+            if (Env.IsDevelopment()) 
+            { 
+                builder.AddRazorRuntimeCompilation(); 
+            } 
+ #endif 
 
         }
 

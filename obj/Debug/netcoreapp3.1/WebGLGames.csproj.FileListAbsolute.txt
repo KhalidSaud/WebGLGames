@@ -64,7 +64,6 @@ J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0
 J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0\WebGLGames\obj\Debug\netcoreapp3.1\WebGLGames.pdb
 J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0\WebGLGames\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Index.cshtml.g.cs
 J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0\WebGLGames\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Privacy.cshtml.g.cs
-J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0\WebGLGames\obj\Debug\netcoreapp3.1\WebGLGames.csprojAssemblyReference.cache
 J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0\WebGLGames\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0\WebGLGames\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 J:\Dropbox\ATIT Me\Clients Projects\Games Khalid Saud\GamesKhalidSaud.NetCore3.0\WebGLGames\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
