@@ -1,5 +1,3 @@
-using System;
-
 namespace WebGLGames.Models
 {
     public class ErrorViewModel

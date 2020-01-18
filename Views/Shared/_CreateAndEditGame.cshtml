@@ -1,0 +1,16 @@
+﻿@model Game
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input type="text" asp-for="Name" required aria-describedby="nameHelp" placeholder="Game Name" class="form-control" />
+    <small id="nameHelp" class="form-text text-muted">This is help text.</small>
+</div>
+
+<div class="form-group">
+    <label asp-for="ReleaseName"></label>
+    <input type="text" asp-for="ReleaseName" placeholder="" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label asp-for="ReleaseNameDotJson"></label>
+    <input type="text" asp-for="ReleaseNameDotJson" placeholder="" class="form-control" />
+</div>

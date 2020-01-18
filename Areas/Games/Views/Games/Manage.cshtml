@@ -1,0 +1,16 @@
+﻿@model Game
+@{
+    ViewData["Title"] = "AddGames";
+}
+
+<h1>Manage Games</h1>
+
+<div class="row">
+    <form method="post" class="col-md-6">
+
+        <partial name="_CreateAndEditGame" model="Model"/>
+
+        <button asp-action="Create" type="submit" class="btn btn-primary form-control">Submit</button>
+
+    </form>
+</div>
