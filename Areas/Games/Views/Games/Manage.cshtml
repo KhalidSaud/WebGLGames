@@ -1,16 +1,87 @@
-﻿@model Game
+﻿@model WebGLGames.Models.ViewModels.GameStatusMessageViewModel
 @{
     ViewData["Title"] = "AddGames";
 }
 
-<h1>Manage Games</h1>
+<br />
+<br />
+<partial name="_StatusMessage" model="Model.StatusMessage" />
 
 <div class="row">
     <form method="post" class="col-md-6">
 
-        <partial name="_CreateAndEditGame" model="Model"/>
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
 
-        <button asp-action="Create" type="submit" class="btn btn-primary form-control">Submit</button>
+        <input hidden asp-for="Game.UserId" />
+
+        @*<partial name="_CreateAndEditGame" model="Model" />*@
+
+        @{ var name = nameof(Model.Game.Name).ToLower(); }
+        <div class="form-group">
+            <label asp-for="Game.Name"></label>
+            <input type="text" asp-for="Game.Name" name="@name" id="nameId" required aria-describedby="nameHelp" placeholder="Game Name" class="form-control" />
+            <small id="nameHelp" class="form-text text-muted">This is help text.</small>
+            <span asp-validation-for="@name" class="text-danger"></span>
+        </div>
+        <button type="button" class="btn btn-secondary form-control" onclick="Test2()">CheckName</button>
+        <div class="form-group">
+            <label asp-for="Game.ReleaseName"></label>
+            <input type="text" asp-for="Game.ReleaseName" placeholder="" class="form-control" />
+            <span asp-validation-for="Game.ReleaseName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Game.ReleaseNameDotJson"></label>
+            <input type="text" asp-for="Game.ReleaseNameDotJson" placeholder="" class="form-control" />
+            <span asp-validation-for="Game.ReleaseNameDotJson" class="text-danger"></span>
+        </div>
+
+
+
+
+        <button asp-action="Create" id="btnId" type="submit" class="btn btn-primary form-control">Submit</button>
+
 
     </form>
 </div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            //getStatusMessage();
+        });
+
+        async function Test2() {
+
+            var name = document.getElementById('nameId').value;
+
+
+            console.log(name);
+
+
+
+            const response = await fetch('/Games/CheckName/' + name, {
+                method: 'Get'
+            });
+            const myJson = await response.json();
+            console.log(JSON.stringify(myJson));
+            console.log('Get: ' + myJson.freeName)
+
+            if (myJson.freeName == true) {
+                document.getElementById("btnId").disabled = false;
+            } else {
+                document.getElementById("btnId").disabled = true;
+            }
+        }
+
+    </script>
+
+}

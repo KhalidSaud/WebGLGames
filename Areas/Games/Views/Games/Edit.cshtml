@@ -9,6 +9,7 @@
     <form method="post" asp-action="EditGame" class="col-md-6">
 
         <input hidden asp-for="Id" />
+        <input hidden asp-for="UserId" />
 
         <partial name="_CreateAndEditGame" model="Model" />
 

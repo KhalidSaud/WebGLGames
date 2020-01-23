@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using WebGLGames.Data;
 using WebGLGames.Models;
 
 namespace WebGLGames.Areas.Identity.Pages.Account
@@ -23,21 +25,28 @@ namespace WebGLGames.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _db;
 
+        
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _db = db;
         }
 
         [BindProperty]
         public InputModel Input { get; set; }
+
+        //[TempData]
+        //public InputModel InputModelTemp { get; set; }
 
         public string ReturnUrl { get; set; }
 
@@ -56,6 +65,7 @@ namespace WebGLGames.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
+            [Remote(controller: "AccountExtras", action: "IsEmailNotTaken")]
             public string Email { get; set; }
 
             [Required]
@@ -82,6 +92,19 @@ namespace WebGLGames.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
+
+                // Check if email exists Starts
+
+                //var emailFromDb = await _db.IdentityUsers.FirstOrDefaultAsync(u => u.Email == Input.Email);
+
+                //if (emailFromDb != null)
+                //{
+                //    //return Page();
+                //}
+
+                // Check if email exists Ends
+
+
                 var user = new User
                 {
                     UserName = Input.Username,
@@ -123,5 +146,7 @@ namespace WebGLGames.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+        
     }
 }
